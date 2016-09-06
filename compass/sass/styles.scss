@@ -1,0 +1,61 @@
+// https://coolors.co/331e36-41337a-6ea4bf-c2efeb-ecfee8
+
+@import 'configs/variables';
+@import 'components/misc';
+@import 'layout/_header';
+@import 'layout/_footer';
+
+body{
+	width: 100%;
+	margin: auto;
+	background-color: $mainBgColor;
+	display: inline-block;
+	font-family: 'Denk One', sans-serif;
+}
+
+	div {
+			
+	    text-align: -webkit-center;
+	    width: 100%;
+	    height: inherit;
+	    background-size: cover;
+			
+
+			img {
+			width: 100%;
+			}
+
+			h2 { 
+			color: #ecfee8;
+			}
+
+			h3, p{
+			color: #6ea4bf;
+			}	
+	}
+
+		.love {
+			float: right;
+			margin: 10px;
+		}
+
+		.hate {
+			float: left;
+			margin: 10px;
+		}
+
+
+
+		h1 {
+		color: #41337a;
+		text-align: center;
+		font-size: 200px;
+		margin: 10px;
+		}
+
+		
+
+		
+
+
+
