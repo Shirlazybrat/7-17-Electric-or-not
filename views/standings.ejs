@@ -1,0 +1,12 @@
+<link rel="stylesheet" type="text/css" href="stylesheet/styles.css">
+
+<a href="/resetUserVotes"><button class="btn btn-primary">Reset my votes</button></a>
+<hr />
+
+<% 
+	for(var i=0; i<theStandings.length; i++){ %>
+		<%= theStandings[i].totalVotes; %>
+		<img src="/images/<%= theStandings[i].imgSrc; %>" width="300px;">
+		<hr />
+	<% }
+%>

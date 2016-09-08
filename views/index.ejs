@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>
+	
+	</title>
 
-	<link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
+
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+
 </head>
 <body>
 
-<h1><%= title %>
-<p> Welcome to <%= title %></p>
-<p> This is where the content will go </p>
+	<h1>A node.js voting game - is the electric car below really electric?</h1>
 
-<%= var imageArray = ['peel.jpg', 'tesla.jpg', 'teslax.jpg', 'yellow.jpg']; 
-	function randomImg {
-		for( var i = 0; i < imageArray.length;i++){
-			imageArray
-		}
-		
-	}
-%>
-<img src=" <%=   %>">
+	<div id="image">
+		<img src="/images/<%= imageToRender %>">
+	</div>
 
+	<div class="button-holder">
+		<div class="button-form">
+			<form class="vote-button" action="/electric" method="post">
+				<input type="hidden" name="image" value="<%= imageToRender %>">
+				<input type="submit" name="submit" class="btn btn-info" value="Electric!">
+			</form>
+		</div>
+	</div>
+
+	<div class="button-holder">
+		<div class="button-form">
+			<form class="vote-button" action="/electric" method="post">
+				<input type="hidden" name="image" value="<%= imageToRender %>">
+				<input type="submit" name="submit" class="btn btn-info" value="Poser">
+			</form>
+		</div>
+	</div>
 
 </body>
 </html>
-
