@@ -1,5 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var multer = require('multer');
+var upload = multer({dest: 'public/images'});
+var type = upload.single('fileUpload');
+var fs = require('fs');
 
 // 1. Connect to MongoDB.
 var mongodb = require('mongodb');
@@ -7,6 +11,7 @@ var mongoClient = mongodb.MongoClient;
 // console.log(mongoClient);
 var mongoUrl = 'mongodb://localhost:27017/electric'
 var db; //Global so all of our routes have access to the db connection
+
 
 mongoClient.connect(mongoUrl, function(error, database){
 	if(error){
@@ -16,6 +21,26 @@ mongoClient.connect(mongoUrl, function(error, database){
 		console.log("Connected to Mongo successfully.");
 	}
 });
+
+
+//Add multer file upload
+router.post('/form_submit', type, function(req,res,next){
+	//res.json(req.file);
+
+	var temp_path = req.file.temp_path;
+	var target_path = 'public/images/' + req.file.originalname
+	fs.readFile(temp_path, function(error, data){
+		fs.writeFile(target_path, data, function(error){
+			res.json('file Uploaded to ' + target_path);
+		});
+	});
+});
+
+
+router.get('/form_submit', function(req,res,next){
+	res.render('form_submit', {});
+});
+
 
 /* GET home page. */
 
@@ -30,7 +55,7 @@ mongoClient.connect(mongoUrl, function(error, database){
 // Send the random one to EJS via a res.render('index', {picsArray})
 
 router.get('/', function(req, res, next) {
-	// console.dir(next);
+	console.dir(next);
 
 	var userIP = req.ip;
 	// 5. Find all the photos the user has voted on and load an array up with them.
